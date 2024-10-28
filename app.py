@@ -12,7 +12,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=HUGGINGFACE
 model = T5ForConditionalGeneration.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
 
 # Define a function to generate text
-def generate_text(input_text, min_length=50, max_length=100):  # Set min_length to desired value
+def generate_text(input_text, min_length=20, max_length=100):  # Set min_length to desired value
     input_ids = tokenizer.encode(input_text, return_tensors="pt")
     with torch.no_grad():
         output_ids = model.generate(input_ids, min_length=min_length, max_length=max_length)
