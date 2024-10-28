@@ -4,7 +4,7 @@ from transformers import T5Tokenizer, T5ForConditionalGeneration
 import torch
 
 # Load the pre-trained T5 model
-model_name = "t5-base"
+model_name = "chitchat00/chitchat0"
 tokenizer = T5Tokenizer.from_pretrained(model_name)
 model = T5ForConditionalGeneration.from_pretrained(model_name)
 
@@ -16,7 +16,7 @@ def generate_text(input_text):
     return tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
 # Streamlit UI
-st.title("T5 Text Generation")
+st.title("CHitchat Text Generation")
 input_text = st.text_area("Enter your text:", "translate English to French: The house is wonderful.")
 if st.button("Generate"):
     output_text = generate_text(input_text)
