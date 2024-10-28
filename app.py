@@ -7,7 +7,7 @@ import torch
 HUGGINGFACE_TOKEN = "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"  # Replace with your actual token
 
 # Load the pre-trained model and tokenizer
-model_name = "chitchat00/chitchat0"
+model_name = "chitchat00/chitchat-v2"
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
 model = T5ForConditionalGeneration.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
 
@@ -20,7 +20,7 @@ def generate_text(input_text):
 
 # Streamlit UI
 st.title("Chitchat Text Generation")
-input_text = st.text_area("Enter your text:", "translate English to French: The house is wonderful.")
+input_text = st.text_area("Enter your text:", "What are the symptoms of diabetes?")
 if st.button("Generate"):
     output_text = generate_text(input_text)
     st.write("Output:", output_text)
