@@ -43,7 +43,7 @@ if st.session_state.get("show_sliders", False):
     repetition_penalty = st.slider("Repetition Penalty:", 1.0, 2.0, 1.2)  # Slider for repetition penalty
 else:
     # Set default values for hidden sliders
-    min_length = 50
+    min_length = 10
     max_length = 100
     temperature = 0.7
     top_p = 0.9
