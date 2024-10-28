@@ -4,7 +4,7 @@ from transformers import AutoTokenizer, AutoModelForQuestionAnswering , T5ForCon
 import torch
 
 # Set your Hugging Face access token
-HUGGINGFACE_TOKEN = "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"  # Replace with your actual token
+HUGGINGFACE_TOKEN = "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"  # Replace with your actual token
 
 # Load the pre-trained model and tokenizer
 model_name = "chitchat00/chitchat-v2"
