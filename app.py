@@ -52,10 +52,4 @@ else:
 if st.button("Generate"):
     output_text = generate_text(input_text, min_length=min_length, max_length=max_length,
                                  temperature=temperature, top_p=top_p, repetition_penalty=repetition_penalty)
-    
-    # Calculate the length of the output
-    answer_length = len(output_text.split())  # Count words in the answer
-    
-    # Display the output and its length
-    st.markdown(f"<p style='font-size:24px;'>Output: {output_text}</p>", unsafe_allow_html=True)
-    st.write(f"Answer Length: {answer_length} words")
+    st.write("Output:", output_text)
