@@ -1,6 +1,6 @@
 # app.py
 import streamlit as st
-from transformers import AutoTokenizer, AutoModelForQuestionAnswering
+from transformers import AutoTokenizer, AutoModelForQuestionAnswering , T5ForConditionalGeneration
 import torch
 
 # Set your Hugging Face access token
@@ -9,7 +9,7 @@ HUGGINGFACE_TOKEN = "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"  # Replace with your
 # Load the pre-trained model and tokenizer
 model_name = "chitchat00/chitchat0"
 tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
-model = AutoModelForQuestionAnswering.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
+model = T5ForConditionalGeneration.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
 
 # Define a function to generate text
 def generate_text(input_text):
