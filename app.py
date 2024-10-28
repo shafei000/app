@@ -12,7 +12,7 @@ tokenizer = AutoTokenizer.from_pretrained(model_name, use_auth_token=HUGGINGFACE
 model = T5ForConditionalGeneration.from_pretrained(model_name, use_auth_token=HUGGINGFACE_TOKEN)
 
 # Define a function to generate text
-def generate_text(input_text, min_length=10, max_length=100):  # Set min_length to desired value
+def generate_text(input_text, min_length=10, max_length=100, temperature=0.7, top_p=0.9, repetition_penalty=1.2):  # Set min_length to desired value
     input_ids = tokenizer.encode(input_text, return_tensors="pt")
     with torch.no_grad():
         output_ids = model.generate(
@@ -25,11 +25,12 @@ def generate_text(input_text, min_length=10, max_length=100):  # Set min_length 
         )
     return tokenizer.decode(output_ids[0], skip_special_tokens=True)
 
-min_length = st.slider("Minimum Length of Answer:", 10, 150, 50)  # Slider for minimum length
-max_length = st.slider("Maximum Length of Answer:", 50, 200, 100)  # Slider for maximum length
-temperature = st.slider("Temperature:", 0.0, 1.0, 0.7)  # Slider for temperature
-top_p = st.slider("Top P:", 0.0, 1.0, 0.9)  # Slider for top_p
-repetition_penalty = st.slider("Repetition Penalty:", 1.0, 2.0, 1.2)
+min_length = st.selectbox("Minimum Length of Answer:", [10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 150])
+max_length = st.selectbox("Maximum Length of Answer:", [50, 100, 150, 200])
+temperature = st.selectbox("Temperature:", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
+top_p = st.selectbox("Top P:", [0.0, 0.2, 0.4, 0.6, 0.8, 1.0])
+repetition_penalty = st.selectbox("Repetition Penalty:", [1.0, 1.1, 1.2, 1.3, 1.4, 1.5])
+
 
 # Streamlit UI
 st.title("Chitchat Text Generation")
