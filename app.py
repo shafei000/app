@@ -1,12 +1,12 @@
 # app.py
 import streamlit as st
-from transformers import T5Tokenizer, T5ForConditionalGeneration
+from transformers import AutoTokenizer, T5ForConditionalGeneration ,AutoModelForQuestionAnswering
 import torch
 
 # Load the pre-trained T5 model
 model_name = "chitchat00/chitchat0"
-tokenizer = T5Tokenizer.from_pretrained(model_name)
-model = T5ForConditionalGeneration.from_pretrained(model_name)
+tokenizer = AutoTokenizer.from_pretrained(model_name)
+model = AutoModelForQuestionAnswering.from_pretrained(model_name)
 
 # Define a function to generate text
 def generate_text(input_text):
